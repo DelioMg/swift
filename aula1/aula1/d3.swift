@@ -7,19 +7,84 @@
 
 import SwiftUI
 
+struct Imagens: View {
+    var body: some View {
+        HStack{
+            Image("truck")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 130, height: 130)
+            Image("lado")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 130, height: 130)
+            Image("logo")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 130, height: 130)
+        }
+        HStack{
+            Image("truck2")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 130, height: 130)
+            Image("logo2")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 130, height: 130)
+            Image("truck3")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 130, height: 130)
+        }
+        HStack{
+            Rectangle()
+                .fill(Color.gray.opacity(0.3))
+                .frame(width: 130, height: 130)
+            Rectangle()
+                .fill(Color.gray.opacity(0.3))
+                .frame(width: 130, height: 130)
+            Rectangle()
+                .fill(Color.gray.opacity(0.3))
+                .frame(width: 130, height: 130)
+        }
+    }
+}
+
+struct botoes : View {
+    var body: some View {
+
+        Spacer().scaledToFit()
+        Image(systemName: "circle.grid.3x3.fill")
+        Spacer().scaledToFit()
+        Image(systemName: "rectangle.fill")
+            .opacity(0.4)
+        Spacer().scaledToFit()
+        Image(systemName: "person.crop.square.fill")
+            .opacity(0.4)
+        Spacer().scaledToFit()
+
+    }
+}
+
 struct SwiftUIView: View {
     var body: some View {
         VStack{
             HStack{
                 Text("Hackatruck")
                     .frame(maxWidth: .infinity, alignment: .leading)
+                    .font(.largeTitle)
+                
                 Image(systemName: "goforward")
+                    .opacity(0.4)
                 Image(systemName: "rectangle.grid.1x2.fill")
+                    .opacity(0.4)
                     
             }
 
             HStack{
-                Image("truck")
+                Spacer()
+                Image("lado")
                     .resizable()
                     .frame(width: 130, height: 130)
                     .clipShape(Circle())
@@ -30,7 +95,7 @@ struct SwiftUIView: View {
                         VStack{
                             Text("8")
                                 .bold()
-                            Text("Fotos")
+                            Text("Posts")
                             
                         }
                         VStack{
@@ -49,9 +114,9 @@ struct SwiftUIView: View {
                     VStack {
                         Button("Editar Perfil") {
                             
-                            
                         }
-                        .padding()
+                        .padding(.horizontal, 60)
+                        .controlSize(.small)
                         .background(.gray.opacity(0.3))
                         .foregroundColor(.black)
                         .font(.title2)
@@ -60,56 +125,23 @@ struct SwiftUIView: View {
                     .font(.title)
                 }
             }
-            Text("HackaTruck")
+            Text("HackaTruck MakerSpace")
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .bold()
-            Text("HackaTruck")
+                
+            Text("Capacitação Swift")
                 .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.vertical, 3)
+            Divider()
+                
             HStack{
-                Spacer().scaledToFit()
-                Image(systemName: "circle.grid.3x3.fill")
-                Spacer().scaledToFit()
-                Image(systemName: "rectangle.fill")
-                Spacer().scaledToFit()
-                Image(systemName: "person.crop.square.fill")
-                Spacer().scaledToFit()
 
+            botoes()
             }
-            VStack{
-                HStack{
-                    Rectangle()
-                        .fill(Color.gray.opacity(0.3))
-                        .frame(width: 130, height: 130)
-                    Rectangle()
-                        .fill(Color.gray.opacity(0.3))
-                        .frame(width: 130, height: 130)
-                    Rectangle()
-                        .fill(Color.gray.opacity(0.3))
-                        .frame(width: 130, height: 130)
-                }
-                HStack{
-                    Rectangle()
-                        .fill(Color.gray.opacity(0.3))
-                        .frame(width: 130, height: 130)
-                    Rectangle()
-                        .fill(Color.gray.opacity(0.3))
-                        .frame(width: 130, height: 130)
-                    Rectangle()
-                        .fill(Color.gray.opacity(0.3))
-                        .frame(width: 130, height: 130)
-                }
-                HStack{
-                    Rectangle()
-                        .fill(Color.gray.opacity(0.3))
-                        .frame(width: 130, height: 130)
-                    Rectangle()
-                        .fill(Color.gray.opacity(0.3))
-                        .frame(width: 130, height: 130)
-                    Rectangle()
-                        .fill(Color.gray.opacity(0.3))
-                        .frame(width: 130, height: 130)
-                }
-            }
+            .padding(.vertical, 8)
+            Divider()
+            
+            Imagens()
+            
         }
     }
 }
