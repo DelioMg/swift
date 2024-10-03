@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  taa
-//
-//  Created by Turma01-10 on 26/09/24.
-//
-
 import SwiftUI
 
 struct RobotControlApp: App {
