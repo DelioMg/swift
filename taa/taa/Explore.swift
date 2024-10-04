@@ -20,7 +20,7 @@ struct Explore: View {
     @State private var evelocidade = 100
     @State private var edistancia = 100
     @State private var currentTime: String = ""
-    @State private var etimer: Timer? = nil
+    @State private var etimer: Timer?
 
     var body: some View {
             VStack  {
@@ -67,16 +67,42 @@ struct Explore: View {
                 
                 
                 HStack{
-                    // Video Stream placeholder
-                    Rectangle()
-                        .fill(Color.gray)
-                        .frame(width: 800, height: 480)
-                        .overlay(Text("Video Stream"))
+   
+                    VStack{
+                        // Video Stream placeholder
+                        Rectangle()
+                            .fill(Color.gray)
+                            .frame(width: 800, height: 480)
+                            .overlay(Text("Video Stream"))
+                        // Distance to obstacle display
+                        Text("Distância ao obstáculo:")
+                        HStack {
+                            VStack {
+                                ProgressView(value: Double(distanceToObstacle), total: 100)
+                                    .progressViewStyle(LinearProgressViewStyle(tint: distanceToObstacle <= 20 ? .red : .green))
+                                    .frame(width: 150)
+                                Text("\(distanceToObstacle) cm")
+                            }
+                            
+                            VStack {
+                                ProgressView(value: Double(distanceToObstacle2), total: 100)
+                                    .progressViewStyle(LinearProgressViewStyle(tint: distanceToObstacle2 <= 20 ? .red : .green))
+                                    .frame(width: 150)
+                                Text("\(distanceToObstacle2) cm")
+                            }
+                            VStack {
+                                ProgressView(value: Double(distanceToObstacle3), total: 100)
+                                    .progressViewStyle(LinearProgressViewStyle(tint: distanceToObstacle3 <= 20 ? .red : .green))
+                                    .frame(width: 150)
+                                Text("\(distanceToObstacle3) cm")
+                            }
+                        }
+                    }
                     
                     // Status display
                     HStack(spacing: 30) {
                         VStack(alignment: .leading) {
-                            Text("**iRobot Create 2**")
+                            Text("**Explore**")
                                 .font(.largeTitle)
                             
                             Divider()
@@ -116,43 +142,24 @@ struct Explore: View {
                 }
                 HStack{
                     VStack{
-                        VStack{
-                            // Distance to obstacle display
-                            Text("Distância ao obstáculo:")
-                            HStack {
-                                VStack {
-                                    ProgressView(value: Double(distanceToObstacle), total: 100)
-                                        .progressViewStyle(LinearProgressViewStyle(tint: distanceToObstacle <= 20 ? .red : .green))
-                                        .frame(width: 150)
-                                    Text("\(distanceToObstacle) cm")
-                                }
-                                
-                                VStack {
-                                    ProgressView(value: Double(distanceToObstacle2), total: 100)
-                                        .progressViewStyle(LinearProgressViewStyle(tint: distanceToObstacle2 <= 20 ? .red : .green))
-                                        .frame(width: 150)
-                                    Text("\(distanceToObstacle2) cm")
-                                }
-                                VStack {
-                                    ProgressView(value: Double(distanceToObstacle3), total: 100)
-                                        .progressViewStyle(LinearProgressViewStyle(tint: distanceToObstacle3 <= 20 ? .red : .green))
-                                        .frame(width: 150)
-                                    Text("\(distanceToObstacle3) cm")
-                                }
-                            }
-                        }
                         HStack {
                             // Information about distance and speed
                             VStack(alignment: .leading) {
                                 Text("Velocidade")
+                                    .padding(1)
                                 Text("\(evelocidade) m/s")
+                                    .padding(1)
                                 Text("Distância")
+                                    .padding(1)
                                 Text("\(edistancia) m")
+                                    .padding(1)
                                 Text("Tempo")
-                                Text("\(String(describing: etimer))")
-                            }
-                            Spacer()
+                                    .padding(1)
+                                Text(currentTime)
+                            }.padding()
+                            
                             Divider()
+                                .padding()
                                 .frame(height: 100)  // Altura da divisória
                                 .padding(.horizontal)
                             // Camera resolution options
@@ -172,37 +179,40 @@ struct Explore: View {
                     Spacer()
                     
                     Divider()
-                        .frame(height: 200)  // Altura da divisória
+                        .frame(height: 180)  // Altura da divisória
                         .padding(.horizontal)
                     
                     HStack{
                         // Control buttons for sensors
                         VStack {
                             Button("LED") { /* Acionar LED */ }
-                                .frame(width: 100, height: 50)
+                                .frame(width: 100, height: 40)
                                 .background(Color.gray)
                                 .foregroundColor(.white)
                                 .cornerRadius(10)
+                                .buttonStyle(BorderlessButtonStyle())
                             Button("Infravermelho") { /* Acionar Infravermelho */ }
-                                .frame(width: 100, height: 50)
+                                .frame(width: 100, height: 40)
                                 .background(Color.gray)
                                 .foregroundColor(.white)
                                 .cornerRadius(10)
+                                .buttonStyle(BorderlessButtonStyle())
                             Button("Beep") { /* Acionar Beep */ }
-                                .frame(width: 100, height: 50)
+                                .frame(width: 100, height: 40)
                                 .background(Color.gray)
                                 .foregroundColor(.white)
                                 .cornerRadius(10)
+                                .buttonStyle(BorderlessButtonStyle())
                         }
                     }
                     Divider()
-                        .frame(height: 100)  // Altura da divisória
+                        .frame(height: 180)  // Altura da divisória
                         .padding(.horizontal)
                     // Directional controls
                     VStack {
                         Circle()
                             .strokeBorder(Color.gray, lineWidth: 2)
-                            .frame(width: 230, height: 230)
+                            .frame(width: 180, height: 180)
                             .overlay(
                                 
                                 VStack {
@@ -248,7 +258,6 @@ struct Explore: View {
                     }
                     .padding(20)
                 }
-                .padding()
                 Spacer()
             }
             .padding()
@@ -267,6 +276,7 @@ struct Explore: View {
         etimer?.invalidate()
         etimer = nil
     }
+        
 }
 
 
