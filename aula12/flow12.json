@@ -1,0 +1,28 @@
+[
+    {
+        "id": "4c4d610210f2accd",
+        "type": "cloudantplus in",
+        "z": "0ccd96ed8f8ec1ee",
+        "name": "",
+        "cloudant": "92c9cc39242c9963",
+        "database": "del",
+        "service": "_ext_",
+        "search": "_all_",
+        "design": "",
+        "index": "",
+        "x": 450,
+        "y": 120,
+        "wires": [
+            [
+                "9d5b99c2f88bd2b3"
+            ]
+        ]
+    },
+    {
+        "id": "92c9cc39242c9963",
+        "type": "cloudantplus",
+        "host": "https://8685b21f-dcdc-4864-a9bc-84e5121ccc12-bluemix.cloudantnosqldb.appdomain.cloud",
+        "name": "credencial1",
+        "useapikey": true
+    }
+]
